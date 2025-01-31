@@ -1,42 +1,138 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Contenedor principal */
+.app-container {
+  width: 90%;
+  max-width: 600px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* CABECERA */
+.header-container {
   text-align: center;
+  margin-bottom: 1rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Logo y título en una sola línea */
+.logo-and-title {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* si quieres alineado al centro total */
+  gap: 1rem; /* espacio entre logo y título */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Ajustar tamaño del logo si deseas */
+.logo-and-title svg {
+  width: 70px;
+  height: 70px;
+}
+
+/* Título principal */
+.main-title {
+  font-size: 1.5rem;
+  color: #fff; /* Asumiendo un fondo azul oscuro */
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Subtítulo debajo */
+.subtitle {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-top: 0.25rem;
+  font-weight: normal; /* o semibold, como prefieras */
+}
+
+/* TARJETA donde van los campos */
+.step-container {
+  width: 100%;
+  background: #F2F2F7; /* un gris muy claro, por ejemplo */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  box-sizing: border-box;
+  margin-bottom: 2rem;
+}
+
+/* Ejemplos de estilos para grupos */
+.form-group, .form-group-inline {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  color: #3C3C43;
+}
+.form-group-inline {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.form-group-inline > div {
+  flex: 1;
+  min-width: 120px;
+}
+
+.form-group label, .form-group p {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #3C3C43;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="datetime-local"],
+select,
+textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Botones */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+button {
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button[type="button"] {
+  background-color: #ccc;
+}
+
+button[type="button"]:hover {
+  background-color: #bbb;
+}
+
+button:last-of-type {
+  background-color: #003366;
+  color: white;
+}
+button:last-of-type:hover {
+  background-color: #002244;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .app-container {
+    width: 95%;
+    margin: 1rem auto;
   }
-  to {
-    transform: rotate(360deg);
+  .logo-and-title {
+    flex-direction: column;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
