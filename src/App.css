@@ -1,8 +1,105 @@
+/* Contenedor que cubre toda la pantalla al buscar */
+.overlay {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.4);
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  z-index: 999; /* Para que quede encima de todo */
+}
+
+/* Spinner circular */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #fff; /* color del spinner */
+  border-top: 6px solid #003366; /* color distinto en la parte superior */
+  border-radius: 50%;
+  animation: spin 0.5s linear infinite;
+}
+
+/* Para la zona de búsqueda de placa: input + icono + ? */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  position: relative; /* si deseas ubicar el ? en la misma línea */
+}
+
+/* El botón con el ícono de lupa */
+.search-button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem; 
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Signo de interrogación para “sin coincidencias” */
+.question-mark {
+  color: #ff0000; /* o el color que quieras */
+  font-size: 1.4rem;
+  margin-left: 0.2rem;
+}
+
+/* Animación de rotación */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@font-face {
+  font-family: 'VWHeadWeb-Bold';
+  src: url('../fonts/VWHeadWeb-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'VWTextWeb-Regular';
+  src: url('../fonts/VWTextWeb-Regular.woff') format('woff');
+}
+
+
+h1,label {
+  font-family: 'VWHeadWeb-Bold', Arial, sans-serif !important;
+}
+
+select,
+option,
+input,
+textarea,
+p {
+  font-family: 'VWTextWeb-Regular', Arial, sans-serif !important;
+}
+
+.volkswagen-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #002244;
+  padding: 10px;
+}
+
+.volkswagen-logo-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.volkswagen-logo svg {
+  width: 50px;
+  height: 50px;
+  fill: #fff;
+}
+
+
 /* Contenedor principal */
 .app-container {
   width: 90%;
   max-width: 600px;
-  margin: 2rem auto;
+  margin: 0.5rem auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,23 +108,25 @@
 
 /* CABECERA */
 .header-container {
-  text-align: center;
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
   margin-bottom: 1rem;
 }
 
-/* Logo y título en una sola línea */
 .logo-and-title {
   display: flex;
-  align-items: center;
-  justify-content: center; /* si quieres alineado al centro total */
-  gap: 1rem; /* espacio entre logo y título */
+  align-items: center;  /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+  gap: 1rem;  /* Espacio entre el SVG y el h1 */
+  text-align: center; /* Asegura que el texto también esté centrado */
 }
 
-/* Ajustar tamaño del logo si deseas */
 .logo-and-title svg {
-  width: 70px;
+  width: 70px; /* Ajusta el tamaño del logo */
   height: 70px;
 }
+
 
 /* Título principal */
 .main-title {
@@ -58,7 +157,7 @@
 
 /* Ejemplos de estilos para grupos */
 .form-group, .form-group-inline {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   display: flex;
   flex-direction: column;
   color: #3C3C43;
@@ -70,7 +169,28 @@
 }
 .form-group-inline > div {
   flex: 1;
-  min-width: 120px;
+  min-width: 220px;
+}
+
+.form-group-inline label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Espacio entre el radio button y el texto */
+}
+
+/* Aumentar ancho del Concesionario */
+.form-group.concesionario {
+  flex: 2;
+  min-width: 150px; /* Ajusta según necesidad */
+}
+
+.form-group.tipo-demo {
+  min-width: 50px; /* Ajusta según necesidad */
+}
+
+
+.form-group-inline input[type="radio"] {
+  transform: scale(1.2); /* Aumenta el tamaño de los radio buttons */
 }
 
 .form-group label, .form-group p {

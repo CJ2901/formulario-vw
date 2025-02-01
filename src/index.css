@@ -12,8 +12,11 @@ html, body {
 /* Fondo degradado y color de texto por defecto */
 body {
   font-family: sans-serif;
-  background: linear-gradient(135deg, #0A0D1A, #063970);
   color: #fff;
+  background: linear-gradient(135deg, #00437A, #001E50);
+  background-attachment: fixed;
+  background-size: cover; 
+  background-repeat: no-repeat;
 }
 
 /* #root con flex para centrar su contenido */
