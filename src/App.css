@@ -1,3 +1,22 @@
+:root {
+  --background-form: #F2F2F7; /* Define la variable de color */
+}
+
+/* Animación de rotación */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@font-face {
+  font-family: 'VWHeadWeb-Bold';
+  src: url('../fonts/VWHeadWeb-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'VWTextWeb-Regular';
+  src: url('../fonts/VWTextWeb-Regular.woff') format('woff');
+}
+
 /* Contenedor que cubre toda la pantalla al buscar */
 .overlay {
   position: fixed;
@@ -22,46 +41,40 @@
   animation: spin 0.5s linear infinite;
 }
 
+
 /* Para la zona de búsqueda de placa: input + icono + ? */
 .search-container {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.5rem;
   position: relative; /* si deseas ubicar el ? en la misma línea */
+}
+
+.input-placa {
+  
+  width: 100px;
+  text-align: center;
+  letter-spacing: 0.2em;
 }
 
 /* El botón con el ícono de lupa */
 .search-button {
-  background-color: transparent;
+  width: 10px;
+  justify-content: center;
   border: none;
-  font-size: 1.2rem; 
+  font-size: 0.8rem; 
   cursor: pointer;
   display: flex;
   align-items: center;
 }
 
-/* Signo de interrogación para “sin coincidencias” */
 .question-mark {
   color: #ff0000; /* o el color que quieras */
-  font-size: 1.4rem;
+  font-size: 0.7rem;
+  margin-top: 0.2rem;
   margin-left: 0.2rem;
+  font-family: 'VWHeadWeb-Bold', Arial, sans-serif !important;
 }
-
-/* Animación de rotación */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@font-face {
-  font-family: 'VWHeadWeb-Bold';
-  src: url('../fonts/VWHeadWeb-Bold.woff') format('woff');
-}
-@font-face {
-  font-family: 'VWTextWeb-Regular';
-  src: url('../fonts/VWTextWeb-Regular.woff') format('woff');
-}
-
 
 h1,label {
   font-family: 'VWHeadWeb-Bold', Arial, sans-serif !important;
@@ -147,7 +160,7 @@ p {
 /* TARJETA donde van los campos */
 .step-container {
   width: 100%;
-  background: #F2F2F7; /* un gris muy claro, por ejemplo */
+  background: var(--background-form); /* un gris muy claro, por ejemplo */
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.25);
@@ -240,6 +253,14 @@ button:last-of-type {
 }
 button:last-of-type:hover {
   background-color: #002244;
+}
+
+.search-button:last-of-type {
+  background-color: var(--background-form);
+  color: white;
+}
+.search-button:last-of-type:hover {
+  background-color: var(--background-form);
 }
 
 /* Responsivo */
