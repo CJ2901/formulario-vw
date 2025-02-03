@@ -2,12 +2,12 @@
   "name": "formulario-vw",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://CJ2901.github.io/formulario-vw",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build": "vite build",
+    "postbuild": "cp -r dist docs"
   },
   "dependencies": {
     "react": "^18.3.1",
