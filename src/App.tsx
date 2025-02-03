@@ -19,7 +19,7 @@ function App() {
     docConductor: '',
     licencia: '',
     nombreConductor: '',
-    conductorEsClienteFinal: false,
+    conductorEsClienteFinal: true,
     tipoDocClienteFinal: '',
     docClienteFinal: '',
     nombreClienteFinal: '',
@@ -48,23 +48,38 @@ function App() {
   // Guardar en sessionStorage cuando cambie formData
   useEffect(() => {
     sessionStorage.setItem('formDataTestDrive', JSON.stringify(formData))
-  }, [formData])
+  }, [formData]);
 
-  // Alertar al cerrar la pestaña si no ha terminado
+
+  // Manejar el botón "Atrás" del navegador o celular
   useEffect(() => {
-    const beforeUnloadListener = (event: BeforeUnloadEvent) => {
-      event.preventDefault()
-      event.returnValue = 'Si sales, se cerrará la sesión.'
-      return 'Si sales, se cerrará la sesión.'
-    }
+    const handleBackButton = (event: PopStateEvent) => {
+      event.preventDefault(); // Evita que la página retroceda en la navegación
+      if (step === 2) {
+        setStep(1); // Si está en el segundo formulario, vuelve al primero
+      } else if (step === 1) {
+        window.history.pushState(null, '', window.location.href); // Evita salir de la app
+      }
+    };
 
-    window.addEventListener('beforeunload', beforeUnloadListener)
+    window.history.pushState(null, '', window.location.href);
+    window.addEventListener('popstate', handleBackButton);
+
     return () => {
-      window.removeEventListener('beforeunload', beforeUnloadListener)
-    }
-  }, [])
+      window.removeEventListener('popstate', handleBackButton);
+    };
+  }, [step]);
 
-  const handleNext = () => setStep(2)
+  const handleNext = () => {
+    setStep(2);
+    window.history.pushState(null, '', window.location.href);
+  };
+
+  const handleBack = () => {
+    setStep(1);
+    window.history.pushState(null, '', window.location.href);
+  };
+
 
   const handleSubmitFinal = () => {
     // Aquí enviarías los datos a tu backend si hace falta
@@ -83,7 +98,7 @@ function App() {
       docConductor: '',
       licencia: '',
       nombreConductor: '',
-      conductorEsClienteFinal: false,
+      conductorEsClienteFinal: true,
       tipoDocClienteFinal: '',
       docClienteFinal: '',
       nombreClienteFinal: '',
@@ -102,6 +117,11 @@ function App() {
     sessionStorage.removeItem('formDataTestDrive')
   }
 
+  const handleRestart = () => {
+    handleReset();
+    setStep(1);
+  }
+
   return (
     <div className="app-container">
       {step === 1 && (
@@ -118,10 +138,11 @@ function App() {
           setFormData={setFormData}
           onSubmitFinal={handleSubmitFinal}
           onReset={handleReset}
+          onBack={handleBack}
         />
       )}
       {step === 3 && (
-        <Confirmation />
+        <Confirmation onRestart={handleRestart} />
       )}
     </div>
   )

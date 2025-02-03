@@ -1,5 +1,8 @@
 :root {
-  --background-form: #F2F2F7; /* Define la variable de color */
+  --background-form-color: #FFFFFF;
+  --text-vw-color:#001E50;
+  --text-titles-color:#3C3C43;
+  --text-complete-color:#0a47f0;
 }
 
 /* Animación de rotación */
@@ -47,14 +50,135 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  position: relative; /* si deseas ubicar el ? en la misma línea */
+  position: relative;
+}
+
+/* === Común a todos los inputs con floating label === */
+.floating-group {
+  position: relative;
+  width: 100%;
+}
+
+.floating-group input,
+.floating-group select {
+  width: 100%;
+  font-size: 1rem;
+  box-sizing: border-box;
+  border: 1px solid;
+  border-radius: 4px;
+  outline: none;
+  background-color: var(--background-form-color);
+  color: var(--text-titles-color);
+  transition: border-color 0.2s ease;
+  appearance: unset;
+
+}
+
+
+/* Contenedor para el select con truncamiento de texto */
+.select-wrapper {
+  position: relative;
+  width: 100%;
+  
+}
+
+.select-wrapper select {
+  width: 100%;
+  padding-right: 1.5rem; /* Espacio para la flecha */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Flechita personalizada para SELECT */
+.floating-group select {
+  color: var(--text-complete-color);
+  background-image: url('../src/assets/arrow_down.svg');
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 0.56rem;
+}
+
+
+.floating-group input:focus {
+  border-color: var(--text-complete-color);
+  color: var(--text-titles-color);
+}
+
+/* Cambiar el borde y el color del texto cuando el select tiene contenido o está enfocado */
+.floating-group select:focus,
+.floating-group select:not([value=""]) {
+  border-color: var(--text-titles-color);
+  color: var(--text-titles-color);
+}
+
+/* El label “flotante” */
+.floating-group label {
+  position: absolute;
+  top: 0.5rem; 
+  left: 0.6rem;
+  color: var(--text-titles-color);
+  pointer-events: none;
+  background-color: var(--background-form-color, #fff); 
+  padding: 0 0.3rem;
+  transition: 0.2s ease all;
+  z-index: 1;
+  font-size: 1rem;
+}
+
+
+/* 1) MODO PLACEHOLDER: si el SELECT es "" y no está en foco => label se queda abajo */
+.floating-group select[value=""]:not(:focus) + label {
+  top: 1rem; 
+  left: 0.6rem;
+  font-size: 1rem;
+}
+
+/* Bordes azules cuando el select está enfocado */
+.floating-group select:focus {
+  border-color: var(--text-complete-color);
+}
+
+
+/* 2) SUBIMOS label si hay foco o valor != "" */
+.floating-group select:focus + label,
+.floating-group select:not([value=""]) + label {
+  top: -0.6rem;
+  left: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-titles-color);
+}
+
+
+
+/* Subir el label cuando el input está en foco o ya tiene texto */
+.floating-group input:focus + label,
+.floating-group input:not(:placeholder-shown) + label{
+  top: -0.6rem;
+  left: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-titles-color);
+}
+
+/* También pintar el borde en azul si tiene contenido */
+.floating-group input:focus,
+.floating-group input:not(:placeholder-shown),
+.floating-group select:focus,
+.floating-group select:not([value=""]) {
+  border-color: var(--text-titles-color);
+  color: var(--text-titles-color);
+}
+
+.div-placa{
+  width: 100px;
 }
 
 .input-placa {
-  
-  width: 100px;
-  text-align: center;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25rem;
+}
+
+.div-tipodemo{
+  width: 1px;
 }
 
 /* El botón con el ícono de lupa */
@@ -76,7 +200,7 @@
   font-family: 'VWHeadWeb-Bold', Arial, sans-serif !important;
 }
 
-h1,label {
+h1 {
   font-family: 'VWHeadWeb-Bold', Arial, sans-serif !important;
 }
 
@@ -84,8 +208,18 @@ select,
 option,
 input,
 textarea,
+h3,
+label,
+span,
 p {
   font-family: 'VWTextWeb-Regular', Arial, sans-serif !important;
+}
+
+h3,hr{
+  margin: 1.5rem 0 1rem 0 ;
+  color: var(--text-titles-color);
+  font-size: medium;
+  
 }
 
 .volkswagen-header {
@@ -159,30 +293,65 @@ p {
 
 /* TARJETA donde van los campos */
 .step-container {
-  width: 100%;
-  background: var(--background-form); /* un gris muy claro, por ejemplo */
+  width: 90%;
+  background: var(--background-form-color); /* un gris muy claro, por ejemplo */
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.25);
   box-sizing: border-box;
   margin-bottom: 2rem;
+  color: var(--text-vw-color);
 }
 
 /* Ejemplos de estilos para grupos */
 .form-group, .form-group-inline {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
   display: flex;
   flex-direction: column;
-  color: #3C3C43;
+  color: var(--text-vw-color);
 }
+
 .form-group-inline {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1rem;
 }
+
+.floating-group.concesionario {
+  flex: 0 0 59%; 
+}
+
+.floating-group.tipo-demo {
+  flex: 0 0 20%; 
+}
+
+.floating-group.tipo-doc {
+  flex: 0 0 20%; 
+}
+
+.floating-group.documento {
+  flex: 0 0 59%; 
+}
+
+.checkbox{
+  margin-top: 10px;
+}
+
+/* Estilo para el contenedor del checkbox */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Espacio entre el checkbox y el texto */
+}
+
+/* Estilo para agregar tabulador antes del texto */
+.checkbox-text::before {
+  padding-left: 1rem;
+}
+
 .form-group-inline > div {
   flex: 1;
-  min-width: 220px;
+  min-width: 110px;
 }
 
 .form-group-inline label {
@@ -191,26 +360,109 @@ p {
   gap: 0.5rem; /* Espacio entre el radio button y el texto */
 }
 
-/* Aumentar ancho del Concesionario */
-.form-group.concesionario {
-  flex: 2;
-  min-width: 150px; /* Ajusta según necesidad */
-}
-
-.form-group.tipo-demo {
-  min-width: 50px; /* Ajusta según necesidad */
-}
-
 
 .form-group-inline input[type="radio"] {
   transform: scale(1.2); /* Aumenta el tamaño de los radio buttons */
 }
 
 .form-group label, .form-group p {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   font-weight: 500;
-  color: #3C3C43;
+  color: var(--text-titles-color);
 }
+
+
+/* Estilo para cada pregunta en el formulario */
+.question-box {
+  font-family: 'VWTextWeb-Regular', Arial, sans-serif !important;
+  background: white; /* Fondo blanco */
+  border-radius: 6px; /* Bordes redondeados */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+  padding: 0.7rem; /* Espaciado interno */
+  margin-bottom: 1rem; /* Separación entre preguntas */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Espacio entre los elementos */
+}
+
+/* Asegurar que los radio buttons estén alineados correctamente */
+.question-box label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Espacio entre el radio y el texto */
+  
+}
+
+/* Opcional: Ajustar los inputs tipo radio para que sean más visibles */
+.question-box input[type="radio"] {
+  transform: scale(1.2); /* Aumentar tamaño del radio button */
+  cursor: pointer;
+}
+
+
+/* Estilo para la caja de preguntas con fondo y sombra */
+.question-box {
+  background: white; /* Fondo blanco */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+  padding: 1rem; /* Espaciado interno */
+  margin-bottom: 1rem; /* Separación entre preguntas */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Contenedor de estrellas */
+.stars-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* Etiqueta de estrellas */
+.star-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.3rem; /* Espaciado entre la estrella y el input */
+}
+
+/* Estilo para las estrellas */
+.star {
+  font-size: 2rem; /* Tamaño grande */
+  color: #444; /* Color de estrella sin seleccionar */
+  transition: color 0.3s ease;
+}
+
+/* Ajustar el tamaño de las estrellas */
+.star-icon {
+  width: 38px; /* Ajustar tamaño */
+  height: 38px;
+  transition: transform 0.2s ease;
+}
+
+/* Cambiar color de estrella cuando está seleccionada */
+.star-label input[type="radio"]:checked + .star {
+  color: #ffcc00; /* Color amarillo cuando está seleccionada */
+}
+
+/* Ocultar el radio button nativo */
+.star-label input[type="radio"] {
+  display: none;
+}
+
+/* Etiquetas de Nada y Excelente */
+.stars-group span {
+  font-size: 0.9rem;
+  color: var(--text-titles-color);
+}
+
+
+
 
 input[type="text"],
 input[type="number"],
@@ -256,12 +508,24 @@ button:last-of-type:hover {
 }
 
 .search-button:last-of-type {
-  background-color: var(--background-form);
+  background-color: var(--background-form-color);
   color: white;
 }
 .search-button:last-of-type:hover {
-  background-color: var(--background-form);
+  background-color: var(--background-form-color);
 }
+
+/* Estilos para inputs y selects deshabilitados */
+.floating-group select:disabled,
+.floating-group input:disabled {
+  background-color: #ffffff; 
+  font-weight: bold;
+  color: var(--text-vw-color); 
+  border-color: #ccc;
+  opacity: 1;
+  background-image: none;
+}
+
 
 /* Responsivo */
 @media (max-width: 600px) {
