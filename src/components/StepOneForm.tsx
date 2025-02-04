@@ -244,14 +244,20 @@ const StepOneForm: React.FC<StepOneFormProps> = ({
               }
             >
               <option value="">Selecciona</option>
-              <option value="T-CROSS TRENDLINE 170 TSI MEC">T-CROSS TRENDLINE 170 TSI MEC</option>
-              <option value="TIGUAN ALLSPACE LIFE 250TSI 1.4L 2WD DSG">TIGUAN ALLSPACE LIFE 250TSI 1.4L 2WD DSG</option>
               <option value="AMAROK COMFORTLINE 3.0 V6 TDI 4x4 - AT, 258 CV">AMAROK COMFORTLINE 3.0 V6 TDI 4x4 - AT, 258 CV</option>
-              <option value="TAOS TRENDLINE 250 TSI TIP">TAOS TRENDLINE 250 TSI TIP</option>
-              <option value="TAOS HIGHLINE 250 TSI TIP">TAOS HIGHLINE 250 TSI TIP</option>
+              <option value="AMAROK HIGHLINE 3.0 V6 TDI 4x4 - AT">AMAROK HIGHLINE 3.0 V6 TDI 4x4 - AT</option>
+              <option value="AMAROK HIGHLINE 3.0 V6 TDI 4x4 - AT, 258 CV">AMAROK HIGHLINE 3.0 V6 TDI 4x4 - AT, 258 CV</option>
               <option value="NIVUS COMFORTLINE 200 TSI TIP">NIVUS COMFORTLINE 200 TSI TIP</option>
+              <option value="NIVUS HIGHLINE 200 TSI TIP">NIVUS HIGHLINE 200 TSI TIP</option>
+              <option value="TAOS COMFORTLINE 250 TSI TIP">TAOS COMFORTLINE 250 TSI TIP</option>
               <option value="TAOS HIGHLINE 250 TSI TIP">TAOS HIGHLINE 250 TSI TIP</option>
+              <option value="TAOS TRENDLINE 250 TSI TIP">TAOS TRENDLINE 250 TSI TIP</option>
+              <option value="T-CROSS COMFORTLINE 200 TSI TIP">T-CROSS COMFORTLINE 200 TSI TIP</option>
+              <option value="T-CROSS HIGHLINE 200 TSI TIP">T-CROSS HIGHLINE 200 TSI TIP</option>
               <option value="TERAMONT PREMIUM 2.0 TSI - AT">TERAMONT PREMIUM 2.0 TSI - AT</option>
+              <option value="TIGUAN ALLSPACE LIFE 250TSI 1.4L 2WD DSG">TIGUAN ALLSPACE LIFE 250TSI 1.4L 2WD DSG</option>
+              <option value="TIGUAN ALLSPACE R-LINE 240TSI 2.0L 4MOTION TIP">TIGUAN ALLSPACE R-LINE 240TSI 2.0L 4MOTION TIP</option>
+              <option value="VIRTUS COMFORTLINE 1.6 MEC">VIRTUS COMFORTLINE 1.6 MEC</option>
             </select>
             <label htmlFor="modeloVersion">Modelo Versión</label>
           </div>
