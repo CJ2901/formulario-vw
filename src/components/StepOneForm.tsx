@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import searchIcon from '../assets/search_icon.svg';
+import fakePlacasData from '../data/fakePlacasdata';
+import asesoresPorConcesionario from '../data/asesoresPorConcesionario';
 
 interface StepOneFormProps {
   formData: any
@@ -7,168 +9,6 @@ interface StepOneFormProps {
   onNext: () => void
   onReset: () => void
 }
-
-
-  const fakePlacasData = [ 
-    {
-      placa: 'ABC123',
-      bastidor: '9BWJ14S6P023622',
-      modeloVersion: 'T-CROSS TRENDLINE 170 TSI MEC'
-    },
-    {
-      placa: 'CJV685',
-      bastidor: '3VVHJ65N9PM070726',
-      modeloVersion: 'TIGUAN ALLSPACE LIFE 250TSI 1.4L 2WD DSG'
-    },
-    {
-      placa: 'BZS744',
-      bastidor: '8AWDW22H8RA018678',
-      modeloVersion: 'AMAROK COMFORTLINE 3.0 V6 TDI 4x4 - AT, 258 CV'
-    },
-    {
-      placa: 'CMI475',
-      bastidor: '3VVKP6B20RM084161',
-      modeloVersion: 'TAOS TRENDLINE 250 TSI TIP'
-    },
-    {
-      placa: 'CMI285',
-      bastidor: '3VV9P6B23RM082452',
-      modeloVersion: 'TAOS HIGHLINE 250 TSI TIP'
-    },
-    {
-      placa: 'CMW434',
-      bastidor: '9BWCH6CH0RP069033',
-      modeloVersion: 'NIVUS COMFORTLINE 200 TSI TIP'
-    },
-    {
-      placa: 'CNE452',
-      bastidor: '3VV9P6B22RM083804',
-      modeloVersion: 'TAOS HIGHLINE 250 TSI TIP'
-    },
-    {
-      placa: 'CNE534',
-      bastidor: '3VVRH65N5RM118354',
-      modeloVersion: 'TIGUAN ALLSPACE R-LINE 240TSI 2.0L 4MOTION TIP'
-    },
-    {
-      placa: 'CNE378',
-      bastidor: '9BWCH6CH0RP068772',
-      modeloVersion: 'NIVUS COMFORTLINE 200 TSI TIP'
-    },
-    {
-      placa: 'CNK030',
-      bastidor: 'WVGZZZCA1RC599567',
-      modeloVersion: 'TERAMONT PREMIUM 2.0 TSI - AT'
-    },
-    {
-      placa: 'CPN351',
-      bastidor: '3VV9P6B21RM096835',
-      modeloVersion: 'TAOS HIGHLINE 250 TSI TIP'
-    },
-    {
-      placa: 'CNO024',
-      bastidor: '9BWBH6BF6S4005419',
-      modeloVersion: 'T-CROSS COMFORTLINE 200 TSI TIP'
-    }
-];
-
-// Puedes colocarlo fuera del componente o en un archivo aparte
-const asesoresPorConcesionario: Record<string, string[]> = {
-  "EUROSHOP LA MOLINA": [
-    "MARÍA PATRICIA, AREU EYZAGUIRRE",
-    "PEDRO, SALAZAR MILLA",
-    "MARIANELA BACA",
-    "PAUL ORAN",
-    "LUIS JOEL LA CRUZ VARGAS",
-    "OMAR ANTONIO ÁLVAREZ HERNANDEZ"
-  ],
-  "AUTOSHOP CAJAMARCA": [
-    "RONALD GUILLERMO INFANTE CARRANZA"
-  ],
-  "AUTOSHOP TRUJILLO": [
-    "JEFFERSON JOEY, GUZMAN BACILIO",
-    "JAMES JHORDAN AGREDA LI",
-    "AARÓN SEBASTIÁN, LESCANO LEÓN",
-    "NELSON ALBERTO ARMAS MELENDEZ"
-  ],
-  "CARPIO": [
-    "CARLOS LUIS CALLE ROALCABA",
-    "ROXANA CAMPOS MERA",
-    "CESAR VASQUEZ"
-  ],
-  "EUROSHOP SURQUILLO": [
-    "FRANZ PAUL ZAVALETA MOTTA",
-    "JOSE RODRIGUEZ",
-    "MARIANELLA ROJAS",
-    "SANDRA MARISELA, DIAZ SOTELO",
-    "RICARDO MIGUEL, ARTETA LUJAN",
-    "CARMEN VIRGINIA, RENDON ARBULÚ",
-    "NATHALIE ALESSANDRA, PACORA VALDIVIA"
-  ],
-  "GNECCO Y CIA": [
-    "MARCO ANTONIO, RIVERA LAZO",
-    "RODRIGO, VIZCARRA DELGADO"
-  ],
-  "INTERAMERICANA CHICLAYO": [
-    "BRUNO CUEVA",
-    "CLEIDY WEN LAY DÍAZ GAMONAL"
-  ],
-  "INTERAMERICANA PIURA": [
-    "GABRIELA LUCIA DIOSES GAMBINI",
-    "STEPHANY GARCÍA TIMANA"
-  ],
-  "IWAGEN": [
-    "BRYAN, LANTOS BENDEZU",
-    "ALAN HUMBERTO, CUETO SEMINARIO"
-  ],
-  "LIMAWAGEN CHORRILLOS": [
-    "NIKE SANCHEZ TELLO",
-    "IVAN, PAJUELO AYALA",
-    "RODOLFO GONZALES",
-    "ROBERTO MATOS CALDAS"
-  ],
-  "MANNUCCI DIESEL SAC": [
-    "ANTHONY QUINTANA VILLAFRANCA",
-    "JOSÉ ALEX VIGO PEREZ",
-    "MARITA REYES VALDIVIEZO",
-    "JUSSEF MORALES RUIZ"
-  ],
-  "PERUMOTOR": [
-    "JULIO ALEJANDRO, BARRIOS CASTILLO",
-    "PAULO QUIROZ LLERENA"
-  ],
-  "EUROSHOP SAN MIGUEL": [
-    "KARLA JESÚS, MENDOZA LEON",
-    "RICARDO BENIGNO, ARTETA HERNANDEZ",
-    "DIANA KATHERIN, CHAVEZ SORIA",
-    "LEANDRO ANTONIO, CATACORA LOMPARTE"
-  ],
-  "EUROSHOP PLAZA NORTE": [
-    "RONIC SALAZAR BUSTAMANTE",
-    "CESAR MANUEL YATACO WONG"
-  ],
-  "EUROSHOP SAN BORJA": [
-    "ERIKA MALINA, BALDEON CALDAS",
-    "LUIS ENRIQUE, ALVAREZ MOORE",
-    "DAVID EDUARDO, MALAGA CESPEDES",
-    "DENNIS RODRIGO, PAZ DEL CARPIO"
-  ],
-  "SURMOTORS AREQUIPA": [
-    "DIDIER GIOVANNI, GOMEZ CARNERO",
-    "ANDREA LUCIA, SALAZAR FERNANDEZ"
-  ],
-  "SURMOTORS ILO": [
-    "ROXANA AMELIA, ECHANDIA PACHECO"
-  ],
-  "SURMOTORS JULIACA": [
-    "KAREN LISBETH MAMANI ZAPANA"
-  ],
-  "WIGO MOTORS": [
-    "ELENA BARDALES",
-    "GIANCARLO HERRERA"
-  ]
-}
-
 
 const StepOneForm: React.FC<StepOneFormProps> = ({
   formData,
@@ -242,7 +82,6 @@ const StepOneForm: React.FC<StepOneFormProps> = ({
 
   // Obtenemos la lista de asesores según el concesionario
   const asesoresDisponibles = asesoresPorConcesionario[formData.concesionario] || []
-
 
   return (
     <div className="app-container">
@@ -599,15 +438,19 @@ const StepOneForm: React.FC<StepOneFormProps> = ({
             />
             <label htmlFor="kilometrajeEntrega">Kilometraje</label>
           </div>
-          <div className="floating-group">
-            <input
-              name="fechaHoraEntrega"
-              type="datetime-local"
-              value={formData.fechaHoraEntrega}
-              onChange={handleChange}
-              placeholder=" "
-            />
-            <label htmlFor="fechaHoraEntrega">Fecha y hora</label>
+        </div>
+        <div className="form-group fecha-hora-group">
+          <div className="form-group">
+            <div className="floating-group">
+              <input
+                name="fechaHoraEntrega"
+                type="datetime-local"
+                value={formData.fechaHoraEntrega}
+                onChange={handleChange}
+                placeholder=" "
+              />
+              <label htmlFor="fechaHoraEntrega">Fecha y hora</label>
+            </div>
           </div>
         </div>
 
@@ -642,17 +485,20 @@ const StepOneForm: React.FC<StepOneFormProps> = ({
             />
             <label htmlFor="kilometrajeRecepcion">Kilometraje</label>
           </div>
-          <div className="floating-group">
-            <input
-              name="fechaHoraRecepcion"
-              type="datetime-local"
-              value={formData.fechaHoraRecepcion}
-              onChange={handleChange}
-              placeholder=" "
-            />
-            <label htmlFor="fechaHoraRecepcion">Fecha y hora</label>
-          </div>
         </div>
+
+          <div className="form-group fecha-hora-group">
+            <div className="floating-group">
+              <input
+                name="fechaHoraRecepcion"
+                type="datetime-local"
+                value={formData.fechaHoraRecepcion}
+                onChange={handleChange}
+                placeholder=" "
+              />
+              <label htmlFor="fechaHoraRecepcion">Fecha y hora</label>
+            </div>
+          </div>
 
 
 
