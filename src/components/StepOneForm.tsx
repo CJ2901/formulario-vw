@@ -8,19 +8,167 @@ interface StepOneFormProps {
   onReset: () => void
 }
 
-const fakePlacasData = [
-  {
-    placa: 'ABC123',
-    bastidor: '9BWJ14S6P023622',
-    modeloVersion: 'TRENDLINE 170 TSI MEC'
-  },
-  {
-    placa: 'XYZ999',
-    bastidor: '1HGG2219S3422AA',
-    modeloVersion: 'HIGHLINE 200 TSI AUT'
-  },
-  // Agrega más registros si deseas...
-]
+
+  const fakePlacasData = [ 
+    {
+      placa: 'ABC123',
+      bastidor: '9BWJ14S6P023622',
+      modeloVersion: 'T-CROSS TRENDLINE 170 TSI MEC'
+    },
+    {
+      placa: 'CJV685',
+      bastidor: '3VVHJ65N9PM070726',
+      modeloVersion: 'TIGUAN ALLSPACE LIFE 250TSI 1.4L 2WD DSG'
+    },
+    {
+      placa: 'BZS744',
+      bastidor: '8AWDW22H8RA018678',
+      modeloVersion: 'AMAROK COMFORTLINE 3.0 V6 TDI 4x4 - AT, 258 CV'
+    },
+    {
+      placa: 'CMI475',
+      bastidor: '3VVKP6B20RM084161',
+      modeloVersion: 'TAOS TRENDLINE 250 TSI TIP'
+    },
+    {
+      placa: 'CMI285',
+      bastidor: '3VV9P6B23RM082452',
+      modeloVersion: 'TAOS HIGHLINE 250 TSI TIP'
+    },
+    {
+      placa: 'CMW434',
+      bastidor: '9BWCH6CH0RP069033',
+      modeloVersion: 'NIVUS COMFORTLINE 200 TSI TIP'
+    },
+    {
+      placa: 'CNE452',
+      bastidor: '3VV9P6B22RM083804',
+      modeloVersion: 'TAOS HIGHLINE 250 TSI TIP'
+    },
+    {
+      placa: 'CNE534',
+      bastidor: '3VVRH65N5RM118354',
+      modeloVersion: 'TIGUAN ALLSPACE R-LINE 240TSI 2.0L 4MOTION TIP'
+    },
+    {
+      placa: 'CNE378',
+      bastidor: '9BWCH6CH0RP068772',
+      modeloVersion: 'NIVUS COMFORTLINE 200 TSI TIP'
+    },
+    {
+      placa: 'CNK030',
+      bastidor: 'WVGZZZCA1RC599567',
+      modeloVersion: 'TERAMONT PREMIUM 2.0 TSI - AT'
+    },
+    {
+      placa: 'CPN351',
+      bastidor: '3VV9P6B21RM096835',
+      modeloVersion: 'TAOS HIGHLINE 250 TSI TIP'
+    },
+    {
+      placa: 'CNO024',
+      bastidor: '9BWBH6BF6S4005419',
+      modeloVersion: 'T-CROSS COMFORTLINE 200 TSI TIP'
+    }
+];
+
+// Puedes colocarlo fuera del componente o en un archivo aparte
+const asesoresPorConcesionario: Record<string, string[]> = {
+  "EUROSHOP LA MOLINA": [
+    "MARÍA PATRICIA, AREU EYZAGUIRRE",
+    "PEDRO, SALAZAR MILLA",
+    "MARIANELA BACA",
+    "PAUL ORAN",
+    "LUIS JOEL LA CRUZ VARGAS",
+    "OMAR ANTONIO ÁLVAREZ HERNANDEZ"
+  ],
+  "AUTOSHOP CAJAMARCA": [
+    "RONALD GUILLERMO INFANTE CARRANZA"
+  ],
+  "AUTOSHOP TRUJILLO": [
+    "JEFFERSON JOEY, GUZMAN BACILIO",
+    "JAMES JHORDAN AGREDA LI",
+    "AARÓN SEBASTIÁN, LESCANO LEÓN",
+    "NELSON ALBERTO ARMAS MELENDEZ"
+  ],
+  "CARPIO": [
+    "CARLOS LUIS CALLE ROALCABA",
+    "ROXANA CAMPOS MERA",
+    "CESAR VASQUEZ"
+  ],
+  "EUROSHOP SURQUILLO": [
+    "FRANZ PAUL ZAVALETA MOTTA",
+    "JOSE RODRIGUEZ",
+    "MARIANELLA ROJAS",
+    "SANDRA MARISELA, DIAZ SOTELO",
+    "RICARDO MIGUEL, ARTETA LUJAN",
+    "CARMEN VIRGINIA, RENDON ARBULÚ",
+    "NATHALIE ALESSANDRA, PACORA VALDIVIA"
+  ],
+  "GNECCO Y CIA": [
+    "MARCO ANTONIO, RIVERA LAZO",
+    "RODRIGO, VIZCARRA DELGADO"
+  ],
+  "INTERAMERICANA CHICLAYO": [
+    "BRUNO CUEVA",
+    "CLEIDY WEN LAY DÍAZ GAMONAL"
+  ],
+  "INTERAMERICANA PIURA": [
+    "GABRIELA LUCIA DIOSES GAMBINI",
+    "STEPHANY GARCÍA TIMANA"
+  ],
+  "IWAGEN": [
+    "BRYAN, LANTOS BENDEZU",
+    "ALAN HUMBERTO, CUETO SEMINARIO"
+  ],
+  "LIMAWAGEN CHORRILLOS": [
+    "NIKE SANCHEZ TELLO",
+    "IVAN, PAJUELO AYALA",
+    "RODOLFO GONZALES",
+    "ROBERTO MATOS CALDAS"
+  ],
+  "MANNUCCI DIESEL SAC": [
+    "ANTHONY QUINTANA VILLAFRANCA",
+    "JOSÉ ALEX VIGO PEREZ",
+    "MARITA REYES VALDIVIEZO",
+    "JUSSEF MORALES RUIZ"
+  ],
+  "PERUMOTOR": [
+    "JULIO ALEJANDRO, BARRIOS CASTILLO",
+    "PAULO QUIROZ LLERENA"
+  ],
+  "EUROSHOP SAN MIGUEL": [
+    "KARLA JESÚS, MENDOZA LEON",
+    "RICARDO BENIGNO, ARTETA HERNANDEZ",
+    "DIANA KATHERIN, CHAVEZ SORIA",
+    "LEANDRO ANTONIO, CATACORA LOMPARTE"
+  ],
+  "EUROSHOP PLAZA NORTE": [
+    "RONIC SALAZAR BUSTAMANTE",
+    "CESAR MANUEL YATACO WONG"
+  ],
+  "EUROSHOP SAN BORJA": [
+    "ERIKA MALINA, BALDEON CALDAS",
+    "LUIS ENRIQUE, ALVAREZ MOORE",
+    "DAVID EDUARDO, MALAGA CESPEDES",
+    "DENNIS RODRIGO, PAZ DEL CARPIO"
+  ],
+  "SURMOTORS AREQUIPA": [
+    "DIDIER GIOVANNI, GOMEZ CARNERO",
+    "ANDREA LUCIA, SALAZAR FERNANDEZ"
+  ],
+  "SURMOTORS ILO": [
+    "ROXANA AMELIA, ECHANDIA PACHECO"
+  ],
+  "SURMOTORS JULIACA": [
+    "KAREN LISBETH MAMANI ZAPANA"
+  ],
+  "WIGO MOTORS": [
+    "ELENA BARDALES",
+    "GIANCARLO HERRERA"
+  ]
+}
+
 
 const StepOneForm: React.FC<StepOneFormProps> = ({
   formData,
@@ -92,6 +240,10 @@ const StepOneForm: React.FC<StepOneFormProps> = ({
     }, 500)
   }
 
+  // Obtenemos la lista de asesores según el concesionario
+  const asesoresDisponibles = asesoresPorConcesionario[formData.concesionario] || []
+
+
   return (
     <div className="app-container">
 
@@ -133,9 +285,26 @@ const StepOneForm: React.FC<StepOneFormProps> = ({
                 required
               >
                 <option value="">Selecciona</option>
-                <option value="MANNUCCI DIESEL S.A.C.">MANNUCCI DIESEL S.A.C.</option>
-                <option value="MANNUCCI 2">MANNUCCI 2</option>
-                <option value="MANNUCCI 3">MANNUCCI 3</option>
+                <option value="AUTOSHOP CAJAMARCA">AUTOSHOP CAJAMARCA</option>
+                <option value="AUTOSHOP TRUJILLO">AUTOSHOP TRUJILLO</option>
+                <option value="CARPIO">CARPIO</option>
+                <option value="EUROSHOP LA MOLINA">EUROSHOP LA MOLINA</option>
+                <option value="EUROSHOP PLAZA NORTE">EUROSHOP PLAZA NORTE</option>
+                <option value="EUROSHOP SAN BORJA">EUROSHOP SAN BORJA</option>
+                <option value="EUROSHOP SAN MIGUEL">EUROSHOP SAN MIGUEL</option>
+                <option value="EUROSHOP SURQUILLO">EUROSHOP SURQUILLO</option>
+                <option value="GNECCO Y CIA">GNECCO Y CIA</option>
+                <option value="INTERAMERICANA CHICLAYO">INTERAMERICANA CHICLAYO</option>
+                <option value="INTERAMERICANA PIURA">INTERAMERICANA PIURA</option>
+                <option value="IWAGEN">IWAGEN</option>
+                <option value="LIMAWAGEN CHORRILLOS">LIMAWAGEN CHORRILLOS</option>
+                <option value="MANNUCCI DIESEL SAC">MANNUCCI DIESEL SAC</option>
+                <option value="PERUMOTOR">PERUMOTOR</option>
+                <option value="SURMOTORS AREQUIPA">SURMOTORS AREQUIPA</option>
+                <option value="SURMOTORS ILO">SURMOTORS ILO</option>
+                <option value="SURMOTORS JULIACA">SURMOTORS JULIACA</option>
+                <option value="WIGO MOTORS">WIGO MOTORS</option>
+
               </select>
               <label htmlFor="concesionario">Concesionario</label>
             </div>
@@ -212,7 +381,10 @@ const StepOneForm: React.FC<StepOneFormProps> = ({
                 onChange={handleChange}
                 type="text"
                 maxLength={17}
-                disabled={Boolean(formData.bastidor) && !noMatch}
+                disabled={  
+                  (formData.placa.trim().length > 0) && 
+                  Boolean(formData.bastidor) && 
+                  !noMatch}
               />
               <label htmlFor="bastidor">Bastidor</label>
             </div>
@@ -226,12 +398,21 @@ const StepOneForm: React.FC<StepOneFormProps> = ({
               name="modeloVersion"
               value={formData.modeloVersion}
               onChange={handleChange}
-              disabled={Boolean(formData.modeloVersion) && !noMatch}
+              disabled={
+                formData.placa.trim().length > 0 && // hay placa no vacía
+                Boolean(formData.bastidor) && 
+                !noMatch
+              }
             >
               <option value="">Selecciona</option>
-              <option value="TRENDLINE 170 TSI MEC">TRENDLINE 170 TSI MEC</option>
-              <option value="HIGHLINE 200 TSI AUT">HIGHLINE 200 TSI AUT</option>
-              <option value="Opción 2">Opción 2</option>
+              <option value="T-CROSS TRENDLINE 170 TSI MEC">T-CROSS TRENDLINE 170 TSI MEC</option>
+              <option value="TIGUAN ALLSPACE LIFE 250TSI 1.4L 2WD DSG">TIGUAN ALLSPACE LIFE 250TSI 1.4L 2WD DSG</option>
+              <option value="AMAROK COMFORTLINE 3.0 V6 TDI 4x4 - AT, 258 CV">AMAROK COMFORTLINE 3.0 V6 TDI 4x4 - AT, 258 CV</option>
+              <option value="TAOS TRENDLINE 250 TSI TIP">TAOS TRENDLINE 250 TSI TIP</option>
+              <option value="TAOS HIGHLINE 250 TSI TIP">TAOS HIGHLINE 250 TSI TIP</option>
+              <option value="NIVUS COMFORTLINE 200 TSI TIP">NIVUS COMFORTLINE 200 TSI TIP</option>
+              <option value="TAOS HIGHLINE 250 TSI TIP">TAOS HIGHLINE 250 TSI TIP</option>
+              <option value="TERAMONT PREMIUM 2.0 TSI - AT">TERAMONT PREMIUM 2.0 TSI - AT</option>
             </select>
             <label htmlFor="modeloVersion">Modelo Versión</label>
           </div>
@@ -335,39 +516,57 @@ const StepOneForm: React.FC<StepOneFormProps> = ({
             <hr />
             <h3>CLIENTE FINAL</h3>
             <div className="form-group-inline">
-              <div>
-                <label>Tipo de Documento</label>
-                <select
-                  name="tipoDocClienteFinal"
-                  value={formData.tipoDocClienteFinal}
-                  onChange={handleChange}
-                >
-                  <option value="">Selecciona</option>
-                  <option value="DNI">DNI</option>
-                  <option value="RUC">RUC</option>
-                </select>
+
+              {/* Tipo de Documento */}
+              <div className="floating-group tipo-doc">
+                <div className='select-wrapper'>
+                  <select
+                    id="tipoDocClienteFinal"
+                    name="tipoDocClienteFinal"
+                    value={formData.tipoDocClienteFinal}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Selecciona</option>
+                    <option value="DNI">DNI</option>
+                    <option value="RUC">RUC</option>
+                  </select>
+                  <label htmlFor="tipoDocClienteFinal">Tipo Documento</label>
+                </div>
               </div>
-              <div>
-                <label>Documento</label>
+
+              {/* Documento */}
+              <div className="form-group">
+                <div className='floating-group documento'>
+                  <input
+                    name="docClienteFinal"
+                    placeholder=" "
+                    value={formData.docClienteFinal}
+                    onChange={handleChange}
+                    type="text"
+                    maxLength={formData.tipoDocClienteFinal === "DNI" ? 8 : formData.tipoDocClienteFinal === "RUC" ? 11 : 20} 
+                  />
+                  <label htmlFor="docClienteFinal">Documento</label>
+                </div>
+              </div>
+            </div>
+
+            {/* Nombre Cliente Final */}
+            <div className="form-group">
+              <div className='floating-group nombreClienteFinal'>
                 <input
-                  name="docClienteFinal"
-                  value={formData.docClienteFinal}
+                  name="nombreClienteFinal"
+                  placeholder=" "
+                  value={formData.nombreClienteFinal}
                   onChange={handleChange}
                   type="text"
                 />
+                <label htmlFor="nombreClienteFinal">Cliente Final</label>
               </div>
-            </div>
-            <div className="form-group">
-              <label>Cliente Final</label>
-              <input
-                name="nombreClienteFinal"
-                value={formData.nombreClienteFinal}
-                onChange={handleChange}
-                type="text"
-              />
             </div>
           </>
         )}
+
 
         <hr />
 
@@ -382,8 +581,11 @@ const StepOneForm: React.FC<StepOneFormProps> = ({
               onChange={handleChange}
             >
               <option value="">Selecciona</option>
-              <option value="JOSE SAAVEDRA PEREZ">JOSE SAAVEDRA PEREZ</option>
-              <option value="Otro Asesor">Otro Asesor</option>
+              {asesoresDisponibles.map((asesor) => (
+                <option key={asesor} value={asesor}>
+                  {asesor}
+                </option>
+              ))}
             </select>
             <label htmlFor="asesorEntrega">Asesor</label>
           </div>
@@ -422,8 +624,11 @@ const StepOneForm: React.FC<StepOneFormProps> = ({
               onChange={handleChange}
             >
               <option value="">Selecciona</option>
-              <option value="JOSE SAAVEDRA PEREZ">JOSE SAAVEDRA PEREZ</option>
-              <option value="Otro Asesor">Otro Asesor</option>
+              {asesoresDisponibles.map((asesor) => (
+                <option key={asesor} value={asesor}>
+                  {asesor}
+                </option>
+              ))}
             </select>
             <label htmlFor="asesorRecepcion">Asesor</label>
           </div>
